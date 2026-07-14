@@ -1,6 +1,6 @@
 [project]
-name = "sucharypl"
-version = "0.1.0"
+name = "sucharypython"
+version = "0.1.1"
 description = "Oficjalna biblioteka bazy dowcipów SucharyAPI"
 readme = "README.md"
 requires-python = ">=3.10"

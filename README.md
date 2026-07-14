@@ -10,13 +10,13 @@ Pythonowa biblioteka do pobierania kawałów z ogólnopolskiej bazy SucharyAPI
 ### Za pomocą pip
 
 ```bash
-pip install sucharypl
+pip install sucharypython
 ```
 
 ### Za pomocą uv (w projekcie)
 
 ```bash
-uv add sucharypl
+uv add sucharypython
 ```
 
 ---
@@ -24,7 +24,7 @@ uv add sucharypl
 ## ⚡ Szybki start
 ### Pobranie losowego suchara
 ```python
-from sucharypl import dajKawal
+from sucharypython import dajKawal
 
 # Pobierz losowy suchar z dowolnej kategorii
 suchar = dajKawal()
@@ -33,7 +33,7 @@ print(suchar)
 
 ### Pobranie suchara z konkretnej kategorii
 ```python
-from sucharypl import dajKawal
+from sucharypython import dajKawal
 
 # Pobierz suchar z kategorii "programowanie"
 suchar = dajKawal(kategoria="programowanie")
@@ -66,7 +66,7 @@ Biblioteka rzuca sformalizowane wyjątki, które możesz łatwo obsługiwać:
 ### Przykład obsługi błędów
 
 ```python
-from sucharypl import dajKawal, SucharyError, SucharyConnectionError, SucharyHTTPError
+from sucharypython import dajKawal, SucharyError, SucharyConnectionError, SucharyHTTPError
 
 try:
     suchar = dajKawal(kategoria="programowanie")
