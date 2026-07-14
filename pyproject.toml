@@ -1,0 +1,14 @@
+[project]
+name = "sucharypl"
+version = "0.1.0"
+description = "Oficjalna biblioteka bazy dowcipów SucharyAPI"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.34.2",
+    "typing>=3.10.0.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.25,<0.12.0"]
+build-backend = "uv_build"
