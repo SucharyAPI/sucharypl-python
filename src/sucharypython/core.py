@@ -1,4 +1,4 @@
-from requests import get
+from requests import get  # noqa: I001
 from requests import exceptions as reqError
 from typing import Literal
 
