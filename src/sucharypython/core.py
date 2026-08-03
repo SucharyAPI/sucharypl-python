@@ -25,7 +25,7 @@ def dajKawal(kategoria: Kategoria | None = None) -> str:
         r = get(adres, timeout=6.5)
         r.raise_for_status()
         dane = r.json()
-        zart = dane["zart"]
+        zart = dane["tresc"]
     except reqError.ConnectionError as e:
         raise SucharyConnectionError("Nie udało się połączyć z bazą. Sprawdź swoje połączenie internetowe") from e
     except reqError.Timeout as e:
