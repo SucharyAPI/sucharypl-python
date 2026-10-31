@@ -41,3 +41,72 @@ def dajKawal(kategoria: Kategoria | None = None) -> str:
         raise SucharyError(f"Nastąpił błąd :( {e}") from e
     else:
         return zart
+
+def wieleKawalow(liczba: int) -> list[str]:
+    adres: str = f"https://sucharyapi.onrender.com/zart/{liczba}"
+    try:
+        r = get(adres, timeout=6.5)
+        r.raise_for_status()
+        dane = r.json()
+    except reqError.ConnectionError as e:
+        raise SucharyConnectionError("Nie udało się połączyć z bazą. Sprawdź swoje połączenie internetowe") from e
+    except reqError.Timeout as e:
+        raise SucharyConnectionError("Serwer nie odpowiada. Spróbuj ponownie później") from e
+    except reqError.HTTPError as e:
+        if e.response.status_code == 404:
+            raise SucharyHTTPError("Niepoprawne wprowadzenie liczby!") from e
+        else:
+            raise SucharyHTTPError("Błąd serwera. Spróbuj ponownie później") from e
+    except reqError.JSONDecodeError as e:
+            raise SucharyError("Otrzymano niepoprawny format danych z serwera") from e
+    except Exception as e:
+        raise SucharyError(f"Nastąpił błąd :( {e}") from e
+    else:
+        zarty: list[str] = []
+        for i in dane:
+            kawal = i["tresc"]
+            zarty.append(kawal)
+        return zarty
+
+def masakra() -> str:
+    adres: str = "https://sucharyapi.onrender.com/masakra"
+    try:
+        r = get(adres, timeout=6.5)
+        r.raise_for_status()
+        dane = r.json()
+        masakra = dane["masakra"]
+    except reqError.ConnectionError as e:
+        raise SucharyConnectionError("Nie udało się połączyć z bazą. Sprawdź swoje połączenie internetowe") from e
+    except reqError.Timeout as e:
+        raise SucharyConnectionError("Serwer nie odpowiada. Spróbuj ponownie później") from e
+    except reqError.HTTPError as e:
+        raise SucharyHTTPError("Błąd serwera. Spróbuj ponownie później") from e
+    except reqError.JSONDecodeError as e:
+            raise SucharyError("Otrzymano niepoprawny format danych z serwera") from e
+    except Exception as e:
+        raise SucharyError(f"Nastąpił błąd :( {e}") from e
+    else:
+        return masakra
+
+def wieleMasakr(liczba: int) -> list[str]:
+    adres: str = f"https://sucharyapi.onrender.com/masakra/{liczba}"
+    try:
+        r = get(adres, timeout=6.5)
+        r.raise_for_status()
+        dane = r.json()
+    except reqError.ConnectionError as e:
+        raise SucharyConnectionError("Nie udało się połączyć z bazą. Sprawdź swoje połączenie internetowe") from e
+    except reqError.Timeout as e:
+        raise SucharyConnectionError("Serwer nie odpowiada. Spróbuj ponownie później") from e
+    except reqError.HTTPError as e:
+        raise SucharyHTTPError("Błąd serwera. Spróbuj ponownie później") from e
+    except reqError.JSONDecodeError as e:
+            raise SucharyError("Otrzymano niepoprawny format danych z serwera") from e
+    except Exception as e:
+        raise SucharyError(f"Nastąpił błąd :( {e}") from e
+    else:
+        masakry: list[str] = []
+        for i in dane:
+            mas = i["masakra"]
+            masakry.append(mas)
+        return masakry
